@@ -64,7 +64,7 @@ class AsyncGradleProcess(object):
 
 '''
 Adapted from Default/exec.py with specific modifications
-for the blaze process.
+for the gradle process.
 '''
 class GradleProcessListener(object):
   def on_data(self, proc, data):
