@@ -1,0 +1,16 @@
+[
+    {
+        "caption": "Gradle: Assemble",
+        "command": "gradle",
+        "args": {
+            "goals": ["assemble"]
+        }
+    },
+    {
+        "caption": "Gradle: Run...",
+        "command": "gradle",
+        "args": {
+            "goals": [],
+        }
+    }
+]

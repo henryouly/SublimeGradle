@@ -1,0 +1,10 @@
+[
+  {
+    "keys": ["ctrl+b"],
+    "command": "gradle",
+    "args": {
+      "paths": [":all"],
+      "goals": ["build"]
+    }
+  }
+]
