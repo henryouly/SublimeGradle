@@ -3,14 +3,28 @@
         "caption": "Gradle: Assemble",
         "command": "gradle",
         "args": {
-            "goals": ["assemble"]
+            "tasks": ["assemble"]
+        }
+    },
+    {
+        "caption": "Gradle: Build",
+        "command": "gradle",
+        "args": {
+            "tasks": ["build"]
+        }
+    },
+    {
+        "caption": "Gradle: Clean",
+        "command": "gradle",
+        "args": {
+            "tasks": ["clean"]
         }
     },
     {
         "caption": "Gradle: Run...",
         "command": "gradle",
         "args": {
-            "goals": [],
+            "tasks": [],
         }
     }
 ]

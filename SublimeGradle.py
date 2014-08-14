@@ -7,9 +7,9 @@ import sys
 import threading
 
 class AsyncGradleProcess(object):
-  def __init__(self, listener, goals, cwd):
+  def __init__(self, listener, tasks, cwd):
     self.listener = listener
-    self.goals = goals
+    self.tasks = tasks
 
     startupinfo = None
 
@@ -18,14 +18,13 @@ class AsyncGradleProcess(object):
     if len(gradle_command) == 0:
       gradle_command = "gradle"
 
-    command = [gradle_command] + goals
     proc_env = os.environ.copy()
     env = {}
     android_home = settings.get("android_home")
     if len(android_home) > 0:
       env['ANDROID_HOME'] = android_home
     proc_env.update(env)
-    self.proc = subprocess.Popen(command, stdout=subprocess.PIPE,
+    self.proc = subprocess.Popen([gradle_command] + tasks, stdout=subprocess.PIPE,
       stderr=subprocess.PIPE, startupinfo=startupinfo, cwd=cwd, env=proc_env, shell=False)
 
     if self.proc.stdout:
@@ -78,19 +77,19 @@ class GradleCommand(sublime_plugin.WindowCommand, GradleProcessListener):
 
   output_view = None
 
-  def run(self, goals, props = None):
+  def run(self, tasks, props = None):
     if self.window.active_view():
       self.window.active_view().erase_status(self.GRADLE_STATUS_ID)
 
-    self.goals = goals
+    self.tasks = tasks
     self.proc = None
     self.init()
     self.build_path = self.current_path()
 
-    if len(goals) == 0:
+    if len(tasks) == 0:
       self.window.show_input_panel('gradle', 'tasks', self.on_done, None, None)
     else:
-      self.on_done(' '.join(goals))
+      self.on_done(' '.join(tasks))
 
   def init(self):
     if not self.output_view:
@@ -109,7 +108,7 @@ class GradleCommand(sublime_plugin.WindowCommand, GradleProcessListener):
   def on_done(self, text):
     self.window.run_command("show_panel", {"panel": "output._gradle"})
 
-    self.proc = AsyncGradleProcess(self, self.goals, self.build_path)
+    self.proc = AsyncGradleProcess(self, text.split(), self.build_path)
 
   def on_data(self, proc, data):
     sublime.set_timeout(functools.partial(self.append_data, proc, data), 0)
