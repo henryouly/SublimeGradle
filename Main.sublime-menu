@@ -44,6 +44,14 @@
                                     "platform": "OSX"
                                 },
                                 "caption": "Key Bindings – User"
+                            },
+                            { "caption": "-" },
+			    {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/SublimeGradle/README.md",
+                                },
+                                "caption": "README"
                             }
                         ]
                     }
