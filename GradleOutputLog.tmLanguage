@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array/>
+	<key>name</key>
+	<string>GradleOutputLog</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.other.gradle_log</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.gradle_log.uptodate</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>([\w:]+) (UP-TO-DATE)</string>
+			<key>name</key>
+			<string>gradle.info.up-to-date</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.gradle.log</string>
+	<key>uuid</key>
+	<string>7d6feafc-04de-4277-9700-87fb34de4f74</string>
+</dict>
+</plist>
