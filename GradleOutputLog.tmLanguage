@@ -19,13 +19,27 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.gradle_log.uptodate</string>
+					<string>comment.gradle_log.uptodate</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>([\w:]+) (UP-TO-DATE)</string>
+			<string>^(:[\w\:]+) (UP\-TO\-DATE|SKIPPED|)</string>
 			<key>name</key>
 			<string>gradle.info.up-to-date</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.other.gradle_log</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^(BUILD SUCCESSFUL)</string>
+			<key>name</key>
+			<string>gradle.info.build</string>
 		</dict>
 	</array>
 	<key>scopeName</key>

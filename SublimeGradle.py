@@ -41,7 +41,7 @@ class GradleView(object):
       return self.__view
 
   def __finish(self):
-    self.add_line("[Finished]")
+    self.process_lines("[Finished]")
 
   def __output_thread(self, pipe, on_finish=None):
     def decode(ind):
@@ -51,7 +51,7 @@ class GradleView(object):
         return ind
 
     while self.__process.poll() is None:
-      data = decode(os.read(pipe.fileno(), 2**15))
+      data = decode(pipe.readline()).strip()
       if len(data) > 0:
         self.process_lines(data)
     if on_finish:

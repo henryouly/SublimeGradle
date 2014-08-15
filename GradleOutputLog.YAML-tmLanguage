@@ -7,11 +7,16 @@ uuid: 7d6feafc-04de-4277-9700-87fb34de4f74
 
 patterns:
 - name: gradle.info.up-to-date
-  match: ([\w:]+) (UP-TO-DATE)
+  match: ^(:[\w\:]+) (UP\-TO\-DATE|SKIPPED|)
   captures:
     '1':
       name: constant.other.gradle_log
     '2':
-      name: keyword.gradle_log.uptodate
+      name: comment.gradle_log.uptodate
+- name: gradle.info.build
+  match: ^(BUILD SUCCESSFUL)
+  captures:
+    '1':
+      name: constant.other.gradle_log
 
 ...
